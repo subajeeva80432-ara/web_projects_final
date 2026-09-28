@@ -1,26 +1,67 @@
 <!DOCTYPE html>
-<html lang="ta">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Web Projects</title>
+  <title>My Web Projects Portfolio</title>
   <style>
-    body { font-family: Arial, sans-serif; padding: 30px; background: #f4f4f9; }
-    h1 { color: #333; }
-    ul { list-style: none; padding: 0; }
-    li { margin: 15px 0; }
-    a { text-decoration: none; font-size: 18px; color: #0066cc; font-weight: bold; }
-    a:hover { text-decoration: underline; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f7f6;
+      margin: 0;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1 {
+      color: #333;
+      margin-bottom: 30px;
+    }
+    .container {
+      width: 100%;
+      max-width: 500px;
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    li {
+      margin-bottom: 12px;
+    }
+    a {
+      display: block;
+      padding: 12px 18px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      text-align: center;
+      transition: background-color 0.3s ease;
+    }
+    a:hover {
+      background-color: #0056b3;
+    }
   </style>
 </head>
 <body>
-  <h1>My Web Projects Portfolio</h1>
-  <ul>
-    <li><a href="./Unit 1/index.html">Unit 1 Project</a></li>
-    <li><a href="./Unit 2/index.html">Unit 2 Project</a></li>
-    <li><a href="./Unit 3/index.html">Unit 3 Project</a></li>
-    <li><a href="./Unit 4/index.html">Unit 4 Project</a></li>
-    <li><a href="./Unit 5/index.html">Unit 5 Project</a></li>
-  </ul>
+
+  <div class="container">
+    <h1>My Web Projects</h1>
+    <ul>
+      <li><a href="./unit-1/">Unit 1 Project</a></li>
+      <li><a href="./unit-2/">Unit 2 Project</a></li>
+      <li><a href="./unit-3/">Unit 3 Project</a></li>
+      <li><a href="./unit-4/">Unit 4 Project</a></li>
+      <li><a href="./unit-5/">Unit 5 Project</a></li>
+    </ul>
+  </div>
+
 </body>
 </html>
