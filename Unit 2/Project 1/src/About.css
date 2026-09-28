@@ -1,0 +1,27 @@
+.about-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 36px 40px;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  border-left: 6px solid #a855f7;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.about-heading {
+  margin: 0 0 14px;
+  font-size: 1.5rem;
+  color: #4f46e5;
+}
+
+.about-text {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.9;
+  color: #475569;
+  max-width: 72ch;
+}

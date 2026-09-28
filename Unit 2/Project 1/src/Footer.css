@@ -1,0 +1,12 @@
+.intro-footer {
+  text-align: center;
+  padding: 28px 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.footer-message {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #e2e8f0;
+  opacity: 0.85;
+}

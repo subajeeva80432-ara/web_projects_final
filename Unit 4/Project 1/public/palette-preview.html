@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pick Your Portfolio Palette</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Segoe UI',system-ui,sans-serif;background:#0a0a0c;color:#f5f0e8;padding:40px 20px}
+  h1{text-align:center;font-size:2rem;margin-bottom:6px}
+  p.sub{text-align:center;color:#a29b91;margin-bottom:40px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:28px;max-width:1200px;margin:0 auto}
+  .card{background:#151518;border:1px solid #2b2b31;border-radius:18px;padding:22px;transition:transform .2s,box-shadow .2s}
+  .card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.5)}
+  .num{font-size:.78rem;color:#a29b91;font-weight:700;letter-spacing:.1em;margin-bottom:6px}
+  .name{font-size:1.15rem;font-weight:700;margin-bottom:16px}
+  .preview{border:1px solid #2b2b31;border-radius:12px;padding:20px;margin-bottom:16px;min-height:130px;display:flex;flex-direction:column;justify-content:center;gap:10px}
+  .preview .tag{font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;font-weight:700}
+  .preview h3{font-size:1.35rem;line-height:1.15}
+  .preview .accent{display:inline-block;padding:8px 18px;border-radius:999px;font-weight:700;font-size:.85rem}
+  .preview .accent.outline{border:1px solid}
+  .swatches{display:flex;gap:10px;flex-wrap:wrap}
+  .sw{flex:1;min-width:70px;border-radius:10px;padding:12px 8px;text-align:center;border:1px solid rgba(255,255,255,.08)}
+  .sw .box{width:100%;height:44px;border-radius:8px;margin-bottom:8px;border:1px solid rgba(0,0,0,.15)}
+  .sw .lbl{font-size:.62rem;letter-spacing:.05em;color:#a29b91;word-break:break-all}
+  .sw .hex{font-size:.72rem;font-weight:700;margin-bottom:4px}
+
+  .glass{background:rgba(245,240,232,.06);border:1px solid rgba(245,240,232,.18);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:12px;padding:18px}
+  .glass .tag{font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;font-weight:700}
+  .glass h3{font-size:1.25rem;line-height:1.15}
+  .glass .accent{display:inline-block;padding:8px 18px;border-radius:999px;font-weight:700;font-size:.85rem}
+  .g-preview{position:relative;border-radius:12px;padding:20px;margin-bottom:16px;min-height:150px;overflow:hidden}
+  .g-preview::before{content:"";position:absolute;inset:0;pointer-events:none}
+  .blob1,.blob2{position:absolute;border-radius:50%;filter:blur(10px);opacity:.55;pointer-events:none}
+  .glass{position:relative;z-index:1}
+</style>
+</head>
+<body>
+  <h1>Pick Your Portfolio Palette</h1>
+  <p class="sub">Kaattunna combo-la unaku pudichadha select pannu — number sollu, naan apply pannudren ✦</p>
+  <div class="grid">
+
+    <!-- 1. Current: Obsidian + Off-white -->
+    <div class="card">
+      <div class="num">COMBO 1 — CURRENT</div>
+      <div class="name">Obsidian + Off-white (Pure Monochrome)</div>
+      <div class="preview" style="background:#0a0a0c;color:#f5f0e8">
+        <span class="tag" style="color:#a29b91">Minimal Luxury</span>
+        <h3>Clean. Bold.<br>Timeless.</h3>
+        <span class="accent" style="background:linear-gradient(120deg,#f5f0e8,#cfc8bc);color:#0a0a0c">Button</span>
+      </div>
+      <div class="swatches">
+        <div class="sw"><div class="box" style="background:#0a0a0c"></div><div class="hex">#0a0a0c</div><div class="lbl">Background</div></div>
+        <div class="sw"><div class="box" style="background:#f5f0e8"></div><div class="hex">#f5f0e8</div><div class="lbl">Text / Accent</div></div>
+        <div class="sw"><div class="box" style="background:#a29b91"></div><div class="hex">#a29b91</div><div class="lbl">Muted Grey</div></div>
+      </div>
+    </div>
+
+    <!-- 2. Obsidian + Off-white + Gold -->
+    <div class="card">
+      <div class="num">COMBO 2</div>
+      <div class="name">Obsidian + Off-white + Gold (Royal)</div>
+      <div class="preview" style="background:#0a0a0c;color:#f5f0e8">
+        <span class="tag" style="color:#d4af37">Luxury Gold</span>
+        <h3>Rich. Royal.<br>Premium.</h3>
+        <span class="accent" style="background:linear-gradient(120deg,#d4af37,#f5d061);color:#1a1405">Button</span>
+      </div>
+      <div class="swatches">
+        <div class="sw"><div class="box" style="background:#0a0a0c"></div><div class="hex">#0a0a0c</div><div class="lbl">Obsidian</div></div>
+        <div class="sw"><div class="box" style="background:#f5f0e8"></div><div class="hex">#f5f0e8</div><div class="lbl">Off-white</div></div>
+        <div class="sw"><div class="box" style="background:#d4af37"></div><div class="hex">#d4af37</div><div class="lbl">Gold Accent</div></div>
+      </div>
+    </div>
+
+    <!-- 3. Obsidian + Off-white + Emerald -->
+    <div class="card">
+      <div class="num">COMBO 3</div>
+      <div class="name">Obsidian + Off-white + Emerald (Jewel)</div>
+      <div class="preview" style="background:#0a0a0c;color:#f5f0e8">
+        <span class="tag" style="color:#10b981">Deep Emerald</span>
+        <h3>Calm. Deep.<br>Elegant.</h3>
+        <span class="accent" style="background:linear-gradient(120deg,#10b981,#34d399);color:#04160e">Button</span>
+      </div>
+      <div class="swatches">
+        <div class="sw"><div class="box" style="background:#0a0a0c"></div><div class="hex">#0a0a0c</div><div class="lbl">Obsidian</div></div>
+        <div class="sw"><div class="box" style="background:#f5f0e8"></div><div class="hex">#f5f0e8</div><div class="lbl">Off-white</div></div>
+        <div class="sw"><div class="box" style="background:#10b981"></div><div class="hex">#10b981</div><div class="lbl">Emerald Accent</div></div>
+      </div>
+    </div>
+
+    <!-- 4. Deep Navy + Ivory + Gold -->
+    <div class="card">
+      <div class="num">COMBO 4</div>
+      <div class="name">Deep Navy + Ivory + Gold (Classic)</div>
+      <div class="preview" style="background:#0a1228;color:#f4f1ea">
+        <span class="tag" style="color:#d4af37">Classic Navy</span>
+        <h3>Trust. Depth.<br>Authority.</h3>
+        <span class="accent" style="background:linear-gradient(120deg,#d4af37,#f5d061);color:#12100a">Button</span>
+      </div>
+      <div class="swatches">
+        <div class="sw"><div class="box" style="background:#0a1228"></div><div class="hex">#0a1228</div><div class="lbl">Navy</div></div>
+        <div class="sw"><div class="box" style="background:#f4f1ea"></div><div class="hex">#f4f1ea</div><div class="lbl">Ivory</div></div>
+        <div class="sw"><div class="box" style="background:#d4af37"></div><div class="hex">#d4af37</div><div class="lbl">Gold Accent</div></div>
+      </div>
+    </div>
+
+    <!-- 5. Charcoal + Ivory + Bronze -->
+    <div class="card">
+      <div class="num">COMBO 5</div>
+      <div class="name">Charcoal + Ivory + Bronze (Warm)</div>
+      <div class="preview" style="background:#141414;color:#f3efe6">
+        <span class="tag" style="color:#c98a3d">Warm Bronze</span>
+        <h3>Warm. Earthy.<br>Cozy.</h3>
+        <span class="accent" style="background:linear-gradient(120deg,#c98a3d,#e0a95c);color:#1d1207">Button</span>
+      </div>
+      <div class="swatches">
+        <div class="sw"><div class="box" style="background:#141414"></div><div class="hex">#141414</div><div class="lbl">Charcoal</div></div>
+        <div class="sw"><div class="box" style="background:#f3efe6"></div><div class="hex">#f3efe6</div><div class="lbl">Ivory</div></div>
+        <div class="sw"><div class="box" style="background:#c98a3d"></div><div class="hex">#c98a3d</div><div class="lbl">Bronze Accent</div></div>
+      </div>
+    </div>
+
+    <!-- 6. Black + White + Electric Blue -->
+    <div class="card">
+      <div class="num">COMBO 6</div>
+      <div class="name">Black + White + Electric Blue (Tech)</div>
+      <div class="preview" style="background:#050507;color:#ffffff">
+        <span class="tag" style="color:#38bdf8">Tech Blue</span>
+        <h3>Modern. Sharp.<br>Digital.</h3>
+        <span class="accent" style="background:linear-gradient(120deg,#0ea5e9,#38bdf8);color:#03141f">Button</span>
+      </div>
+      <div class="swatches">
+        <div class="sw"><div class="box" style="background:#050507"></div><div class="hex">#050507</div><div class="lbl">Black</div></div>
+        <div class="sw"><div class="box" style="background:#ffffff"></div><div class="hex">#ffffff</div><div class="lbl">White</div></div>
+        <div class="sw"><div class="box" style="background:#0ea5e9"></div><div class="hex">#0ea5e9</div><div class="lbl">Electric Blue</div></div>
+      </div>
+    </div>
+
+    <!-- 7. Espresso + Cream + Amber -->
+    <div class="card">
+      <div class="num">COMBO 7</div>
+      <div class="name">Espresso + Cream + Amber (Coffee)</div>
+      <div class="preview" style="background:#1a1109;color:#f7f2e9">
+        <span class="tag" style="color:#f59e0b">Golden Amber</span>
+        <h3>Rich. Bold.<br>Comfortable.</h3>
+        <span class="accent" style="background:linear-gradient(120deg,#f59e0b,#fbbf24);color:#1c1204">Button</span>
+      </div>
+      <div class="swatches">
+        <div class="sw"><div class="box" style="background:#1a1109"></div><div class="hex">#1a1109</div><div class="lbl">Espresso</div></div>
+        <div class="sw"><div class="box" style="background:#f7f2e9"></div><div class="hex">#f7f2e9</div><div class="lbl">Cream</div></div>
+        <div class="sw"><div class="box" style="background:#f59e0b"></div><div class="hex">#f59e0b</div><div class="lbl">Amber Accent</div></div>
+      </div>
+    </div>
+
+    <!-- 8. Deep Forest + Cream + Sage -->
+    <div class="card">
+      <div class="num">COMBO 8</div>
+      <div class="name">Deep Forest + Cream + Sage (Nature)</div>
+      <div class="preview" style="background:#0c1410;color:#f2f0e8">
+        <span class="tag" style="color:#84cc9a">Forest Sage</span>
+        <h3>Fresh. Grounded.<br>Serene.</h3>
+        <span class="accent" style="background:linear-gradient(120deg,#3f9142,#84cc9a);color:#06140a">Button</span>
+      </div>
+      <div class="swatches">
+        <div class="sw"><div class="box" style="background:#0c1410"></div><div class="hex">#0c1410</div><div class="lbl">Forest</div></div>
+        <div class="sw"><div class="box" style="background:#f2f0e8"></div><div class="hex">#f2f0e8</div><div class="lbl">Cream</div></div>
+        <div class="sw"><div class="box" style="background:#3f9142"></div><div class="hex">#3f9142</div><div class="lbl">Sage Accent</div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <h1 style="margin-top:60px">Top-Class Glass Combos</h1>
+  <p class="sub">Frosted glassmorphism effect — premium la premium ✦</p>
+  <div class="grid">
+
+    <!-- G1. Obsidian + Gold Glass -->
+    <div class="card">
+      <div class="num">GLASS COMBO 1</div>
+      <div class="name">Obsidian + Gold + Glass (Luxury)</div>
+      <div class="g-preview" style="background:linear-gradient(135deg,#0a0a0c,#241a08)">
+        <span class="blob1" style="width:120px;height:120px;background:#d4af37;top:-30px;right:-20px"></span>
+        <span class="blob2" style="width:100px;height:100px;background:#f5d061;bottom:-25px;left:-15px"></span>
+        <div class="glass" style="color:#f5f0e8">
+          <div class="tag" style="color:#f5d061">Gold Glass</div>
+          <h3>Royal Luxury<br>Glass</h3>
+          <span class="accent" style="background:linear-gradient(120deg,#d4af37,#f5d061);color:#1a1405">Button</span>
+        </div>
+      </div>
+      <div class="swatches">
+        <div class="sw"><div class="box" style="background:#0a0a0c"></div><div class="hex">#0a0a0c</div><div class="lbl">Obsidian</div></div>
+        <div class="sw"><div class="box" style="background:#f5f0e8"></div><div class="hex">#f5f0e8</div><div class="lbl">Off-white</div></div>
+        <div class="sw"><div class="box" style="background:#d4af37"></div><div class="hex">#d4af37</div><div class="lbl">Gold</div></div>
+        <div class="sw"><div class="box" style="background:rgba(245,240,232,.14)"></div><div class="hex">Glass</div><div class="lbl">Blur</div></div>
+      </div>
+    </div>
+
+    <!-- G2. Black + White Glass -->
+    <div class="card">
+      <div class="num">GLASS COMBO 2</div>
+      <div class="name">Black + White + Glass (Pure)</div>
+      <div class="g-preview" style="background:linear-gradient(135deg,#050507,#1a1a1e)">
+        <span class="blob1" style="width:120px;height:120px;background:#ffffff;top:-30px;right:-20px"></span>
+        <span class="blob2" style="width:100px;height:100px;background:#a29b91;bottom:-25px;left:-15px"></span>
+        <div class="glass" style="color:#ffffff">
+          <div class="tag" style="color:#ffffff">White Glass</div>
+          <h3>Pure White<br>Glass</h3>
+          <span class="accent" style="background:linear-gradient(120deg,#ffffff,#cfc8bc);color:#050507">Button</span>
+        </div>
+      </div>
+      <div class="swatches">
+        <div class="sw"><div class="box" style="background:#050507"></div><div class="hex">#050507</div><div class="lbl">Black</div></div>
+        <div class="sw"><div class="box" style="background:#ffffff"></div><div class="hex">#ffffff</div><div class="lbl">White</div></div>
+        <div class="sw"><div class="box" style="background:rgba(255,255,255,.14)"></div><div class="hex">Glass</div><div class="lbl">Blur</div></div>
+      </div>
+    </div>
+
+    <!-- G3. Charcoal + Rose Gold Glass -->
+    <div class="card">
+      <div class="num">GLASS COMBO 3</div>
+      <div class="name">Charcoal + Rose Gold + Glass (Elegant)</div>
+      <div class="g-preview" style="background:linear-gradient(135deg,#141414,#2a1515)">
+        <span class="blob1" style="width:120px;height:120px;background:#e0b4b1;top:-30px;right:-20px"></span>
+        <span class="blob2" style="width:100px;height:100px;background:#c98a8a;bottom:-25px;left:-15px"></span>
+        <div class="glass" style="color:#f7f1ef">
+          <div class="tag" style="color:#e8c0bd">Rose Gold Glass</div>
+          <h3>Soft Elegance<br>Glass</h3>
+          <span class="accent" style="background:linear-gradient(120deg,#e0b4b1,#f0d2cf);color:#241110">Button</span>
+        </div>
+      </div>
+      <div class="swatches">
+        <div class="sw"><div class="box" style="background:#141414"></div><div class="hex">#141414</div><div class="lbl">Charcoal</div></div>
+        <div class="sw"><div class="box" style="background:#f7f1ef"></div><div class="hex">#f7f1ef</div><div class="lbl">Ivory</div></div>
+        <div class="sw"><div class="box" style="background:#e0b4b1"></div><div class="hex">#e0b4b1</div><div class="lbl">Rose Gold</div></div>
+        <div class="sw"><div class="box" style="background:rgba(247,241,239,.14)"></div><div class="hex">Glass</div><div class="lbl">Blur</div></div>
+      </div>
+    </div>
+
+    <!-- G4. Midnight + Platinum Glass -->
+    <div class="card">
+      <div class="num">GLASS COMBO 4</div>
+      <div class="name">Midnight + Platinum + Glass (Steel)</div>
+      <div class="g-preview" style="background:linear-gradient(135deg,#0c1020,#1a2033)">
+        <span class="blob1" style="width:120px;height:120px;background:#e5e7eb;top:-30px;right:-20px"></span>
+        <span class="blob2" style="width:100px;height:100px;background:#94a3b8;bottom:-25px;left:-15px"></span>
+        <div class="glass" style="color:#f1f5f9">
+          <div class="tag" style="color:#e5e7eb">Platinum Glass</div>
+          <h3>Cool Steel<br>Glass</h3>
+          <span class="accent" style="background:linear-gradient(120deg,#e5e7eb,#cbd5e1);color:#0b1020">Button</span>
+        </div>
+      </div>
+      <div class="swatches">
+        <div class="sw"><div class="box" style="background:#0c1020"></div><div class="hex">#0c1020</div><div class="lbl">Midnight</div></div>
+        <div class="sw"><div class="box" style="background:#f1f5f9"></div><div class="hex">#f1f5f9</div><div class="lbl">Ice White</div></div>
+        <div class="sw"><div class="box" style="background:#94a3b8"></div><div class="hex">#94a3b8</div><div class="lbl">Platinum</div></div>
+        <div class="sw"><div class="box" style="background:rgba(241,245,249,.14)"></div><div class="hex">Glass</div><div class="lbl">Blur</div></div>
+      </div>
+    </div>
+
+    <!-- G5. Espresso + Champagne Glass -->
+    <div class="card">
+      <div class="num">GLASS COMBO 5</div>
+      <div class="name">Espresso + Champagne + Glass (Warm Luxe)</div>
+      <div class="g-preview" style="background:linear-gradient(135deg,#1a1109,#33210f)">
+        <span class="blob1" style="width:120px;height:120px;background:#f5e6c4;top:-30px;right:-20px"></span>
+        <span class="blob2" style="width:100px;height:100px;background:#d4af37;bottom:-25px;left:-15px"></span>
+        <div class="glass" style="color:#f7f2e9">
+          <div class="tag" style="color:#f5e6c4">Champagne Glass</div>
+          <h3>Warm Golden<br>Glass</h3>
+          <span class="accent" style="background:linear-gradient(120deg,#f5e6c4,#e8c88a);color:#221505">Button</span>
+        </div>
+      </div>
+      <div class="swatches">
+        <div class="sw"><div class="box" style="background:#1a1109"></div><div class="hex">#1a1109</div><div class="lbl">Espresso</div></div>
+        <div class="sw"><div class="box" style="background:#f7f2e9"></div><div class="hex">#f7f2e9</div><div class="lbl">Cream</div></div>
+        <div class="sw"><div class="box" style="background:#f5e6c4"></div><div class="hex">#f5e6c4</div><div class="lbl">Champagne</div></div>
+        <div class="sw"><div class="box" style="background:rgba(247,242,233,.14)"></div><div class="hex">Glass</div><div class="lbl">Blur</div></div>
+      </div>
+    </div>
+
+    <!-- G6. Deep Forest + Mint Glass -->
+    <div class="card">
+      <div class="num">GLASS COMBO 6</div>
+      <div class="name">Deep Forest + Mint + Glass (Fresh)</div>
+      <div class="g-preview" style="background:linear-gradient(135deg,#0c1410,#14251a)">
+        <span class="blob1" style="width:120px;height:120px;background:#a7f3d0;top:-30px;right:-20px"></span>
+        <span class="blob2" style="width:100px;height:100px;background:#34d399;bottom:-25px;left:-15px"></span>
+        <div class="glass" style="color:#ecfdf5">
+          <div class="tag" style="color:#a7f3d0">Mint Glass</div>
+          <h3>Fresh Cool<br>Glass</h3>
+          <span class="accent" style="background:linear-gradient(120deg,#a7f3d0,#34d399);color:#04170c">Button</span>
+        </div>
+      </div>
+      <div class="swatches">
+        <div class="sw"><div class="box" style="background:#0c1410"></div><div class="hex">#0c1410</div><div class="lbl">Forest</div></div>
+        <div class="sw"><div class="box" style="background:#ecfdf5"></div><div class="hex">#ecfdf5</div><div class="lbl">Mint White</div></div>
+        <div class="sw"><div class="box" style="background:#34d399"></div><div class="hex">#34d399</div><div class="lbl">Mint</div></div>
+        <div class="sw"><div class="box" style="background:rgba(236,253,245,.14)"></div><div class="hex">Glass</div><div class="lbl">Blur</div></div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

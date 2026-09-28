@@ -1,0 +1,78 @@
+.hobby-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(800px 400px at 10% 0%, rgba(236, 72, 153, 0.25), transparent 60%),
+    radial-gradient(700px 400px at 90% 90%, rgba(244, 63, 94, 0.2), transparent 60%),
+    linear-gradient(160deg, #831843 0%, #9d174d 50%, #be123c 100%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 40px 20px 60px;
+}
+
+.hobby-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hobby-header {
+  margin-bottom: 44px;
+  animation: hobbyFade 0.7s ease both;
+}
+
+.hobby-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fecdd3;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 6px 18px;
+  border-radius: 999px;
+  margin-bottom: 20px;
+}
+
+.hobby-heading {
+  margin: 0 0 12px;
+  font-size: 2.6rem;
+  color: #ffffff;
+  font-weight: 800;
+}
+
+.hobby-subtitle {
+  margin: 0 auto;
+  font-size: 1.1rem;
+  color: #fecdd3;
+  max-width: 520px;
+  line-height: 1.6;
+}
+
+.hobby-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+}
+
+@keyframes hobbyFade {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .hobby-page {
+    padding: 28px 14px 40px;
+  }
+  .hobby-heading {
+    font-size: 2rem;
+  }
+  .hobby-grid {
+    gap: 22px;
+  }
+}

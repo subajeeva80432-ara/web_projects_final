@@ -1,0 +1,105 @@
+.hobby-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 32px 28px 0;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 340px;
+  transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.3s ease;
+  animation: cardPop 0.6s ease both;
+}
+
+.hobby-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.hobby-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.hobby-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.hobby-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 22px 44px rgba(190, 18, 60, 0.35);
+}
+
+.hobby-icon {
+  width: 84px;
+  height: 84px;
+  margin: 0 auto 20px;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.6rem;
+  background: linear-gradient(135deg, #ffe4e6, #fce7f3);
+  box-shadow: inset 0 0 0 2px rgba(244, 63, 94, 0.15);
+}
+
+.hobby-title {
+  margin: 0 0 12px;
+  font-size: 1.4rem;
+  color: #be185d;
+  font-weight: 700;
+}
+
+.hobby-description {
+  margin: 0 0 18px;
+  font-size: 0.98rem;
+  color: #64748b;
+  line-height: 1.65;
+  flex-grow: 1;
+}
+
+.hobby-tag {
+  display: inline-block;
+  background: #fff1f2;
+  color: #be185d;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 999px;
+  margin-bottom: 18px;
+}
+
+.hobby-footer {
+  margin: 0 -28px;
+  padding: 18px 28px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.hobby-level {
+  display: inline-block;
+  background: linear-gradient(135deg, #be185d, #e11d48);
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 999px;
+  box-shadow: 0 4px 14px rgba(190, 18, 60, 0.35);
+}
+
+@keyframes cardPop {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .hobby-card {
+    min-height: 0;
+    padding: 26px 22px 0;
+  }
+  .hobby-footer {
+    margin: 0 -22px;
+    padding: 16px 22px;
+  }
+}

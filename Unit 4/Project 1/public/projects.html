@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — Subasri Aramudhu</title>
+
+<meta name="description" content="All projects of Subasri — web development intern at ATC Travel Zone and CS &amp; Cyber Security student: web, Python, Java, UI/UX and AI agent experiments, plus internship offers.">
+<meta name="author" content="Subasri">
+<meta name="robots" content="index, follow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   Design tokens
+   ============================================================ */
+:root{
+  --font-display:"Cinzel Decorative",serif;
+  --font-heading:"Space Grotesk",sans-serif;
+  --font-body:"Manrope",sans-serif;
+
+  --bg:#0a0a0c;
+  --bg-soft:#120f08;
+  --card:rgba(255,255,255,.06);
+  --card-2:rgba(255,255,255,.10);
+  --border:rgba(212,175,55,.18);
+  --text:#f5f0e8;
+  --muted:#a29b91;
+  --primary:#d4af37;
+  --primary-strong:#f5d061;
+  --primary-soft:rgba(212,175,55,.14);
+  --gradient:linear-gradient(120deg,#d4af37,#f5d061,#b8860b,#d4af37);
+  --gradient-static:linear-gradient(120deg,#d4af37,#f5d061);
+  --glow:0 0 48px rgba(212,175,55,.25);
+  --glow-strong:0 0 70px rgba(245,208,97,.3);
+  --ring:rgba(212,175,55,.45);
+  --shadow:0 18px 45px rgba(0,0,0,.55);
+  --nav-bg:rgba(10,10,12,.55);
+  --input-bg:rgba(255,255,255,.07);
+  --chip-bg:rgba(212,175,55,.10);
+  --btn-text:#1a1405;
+}
+html[data-theme="light"]{
+  --bg:#f7f3ea;
+  --bg-soft:#efe9db;
+  --card:rgba(255,255,255,.65);
+  --card-2:rgba(255,255,255,.85);
+  --border:rgba(26,20,5,.12);
+  --text:#1a1405;
+  --muted:#7a6f56;
+  --primary:#b8860b;
+  --primary-strong:#8f6b00;
+  --primary-soft:rgba(184,134,11,.12);
+  --gradient:linear-gradient(120deg,#b8860b,#d4af37,#f5d061,#d4af37);
+  --gradient-static:linear-gradient(120deg,#b8860b,#d4af37);
+  --glow:0 0 42px rgba(184,134,11,.18);
+  --glow-strong:0 0 60px rgba(184,134,11,.28);
+  --ring:rgba(184,134,11,.4);
+  --shadow:0 18px 45px rgba(60,45,10,.14);
+  --nav-bg:rgba(247,243,234,.7);
+  --input-bg:rgba(255,255,255,.9);
+  --chip-bg:rgba(184,134,11,.10);
+  --btn-text:#f7f3ea;
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-body);
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.65;
+  overflow-x:hidden;
+  transition:background .35s ease,color .35s ease;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  background:
+    radial-gradient(900px 500px at 85% -10%,rgba(212,175,55,.10),transparent 60%),
+    radial-gradient(800px 500px at -10% 25%,rgba(245,208,97,.07),transparent 60%),
+    radial-gradient(700px 500px at 60% 110%,rgba(184,134,11,.05),transparent 60%);
+  pointer-events:none;
+}
+body::after{
+  content:"";
+  position:fixed;
+  inset:-50%;
+  z-index:-1;
+  background:
+    radial-gradient(500px circle at 30% 30%,rgba(212,175,55,.06),transparent 60%),
+    radial-gradient(600px circle at 75% 65%,rgba(245,208,97,.05),transparent 60%);
+  pointer-events:none;
+  animation:aurora 16s ease-in-out infinite alternate;
+}
+@keyframes aurora{
+  0%{transform:translate(-4%,-2%) scale(1)}
+  50%{transform:translate(4%,3%) scale(1.06)}
+  100%{transform:translate(-2%,4%) scale(1.02)}
+}
+.grain{
+  position:fixed;
+  inset:0;
+  z-index:9998;
+  pointer-events:none;
+  opacity:.03;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/></filter><rect width='120' height='120' filter='url(%23n)'/></svg>");
+}
+a{color:var(--primary);text-decoration:none}
+a:hover{color:var(--primary-strong)}
+button{font-family:inherit;cursor:pointer}
+::selection{background:var(--primary-strong);color:#fff}
+
+.container{max-width:1140px;margin:0 auto;padding:0 24px}
+.section{padding:84px 0;position:relative}
+.section-tight{padding:56px 0}
+
+.skip-link{position:absolute;left:-999px;top:8px;z-index:200;background:var(--primary-strong);color:#fff;padding:10px 16px;border-radius:8px}
+.skip-link:focus{left:8px}
+
+/* ============================================================
+   Typography
+   ============================================================ */
+h1,h2,h3,h4{font-family:var(--font-heading);line-height:1.2;letter-spacing:-.01em}
+h1{font-size:clamp(2.4rem,5.5vw,4rem)}
+h2{font-size:clamp(1.8rem,4vw,2.7rem);font-weight:700}
+h3{font-size:1.15rem;font-weight:600}
+p{color:var(--muted)}
+
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--font-heading);font-size:.82rem;font-weight:600;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--primary);margin-bottom:14px;
+}
+.eyebrow::before{content:"";width:34px;height:2px;background:var(--gradient);border-radius:2px}
+.section-head{max-width:680px;margin-bottom:44px}
+.section-head h2{margin-bottom:14px}
+.section-head p{font-size:1.02rem}
+.section-head.center{text-align:center;margin-left:auto;margin-right:auto}
+.section-head.center .eyebrow::after{content:"";width:34px;height:2px;background:var(--gradient);border-radius:2px}
+
+.text-gradient{
+  background:var(--gradient);
+  background-size:220% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:gradShift 8s ease-in-out infinite;
+}
+@keyframes gradShift{
+  0%,100%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+}
+
+/* ============================================================
+   Buttons & chips
+   ============================================================ */
+.btn{
+  display:inline-flex;align-items:center;gap:9px;padding:13px 26px;border-radius:999px;
+  font-family:var(--font-heading);font-size:.95rem;font-weight:600;
+  border:1px solid transparent;transition:transform .2s ease,box-shadow .2s ease,background .2s ease;white-space:nowrap;
+}
+.btn-primary{background:var(--gradient-static);color:var(--btn-text);box-shadow:var(--glow)}
+.btn-primary:hover{color:var(--btn-text);transform:translateY(-2px);box-shadow:var(--glow-strong)}
+.btn-outline{border-color:var(--border);color:var(--text);background:transparent}
+.btn-outline:hover{border-color:var(--primary);color:var(--primary);transform:translateY(-2px)}
+.btn svg{width:18px;height:18px;flex:none}
+
+.chip{
+  display:inline-flex;align-items:center;gap:6px;padding:6px 13px;border-radius:999px;
+  background:var(--chip-bg);border:1px solid var(--border);
+  font-size:.78rem;font-weight:600;color:var(--muted);
+}
+
+/* ============================================================
+   Reveal animation
+   ============================================================ */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+  *{animation:none!important}
+}
+
+/* ============================================================
+   Scroll progress
+   ============================================================ */
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--gradient);z-index:150}
+
+/* ============================================================
+   Navbar
+   ============================================================ */
+header.site-header{
+  position:sticky;top:0;z-index:100;
+  background:var(--nav-bg);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+.brand-logo{
+  display:inline-flex;align-items:center;gap:.28em;white-space:nowrap;
+  font-family:"Cinzel Decorative","Cinzel",serif;font-size:1.25rem;font-weight:700;color:var(--text);letter-spacing:.04em;
+}
+.brand-logo span{color:var(--primary)}
+.nav-links{display:flex;align-items:center;gap:26px;list-style:none}
+.nav-links a{color:var(--text);font-family:var(--font-heading);font-size:.9rem;font-weight:500;position:relative;padding:4px 0}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--gradient);border-radius:2px;transition:width .25s ease}
+.nav-links a:hover::after{width:100%}
+.nav-links a.active{color:var(--primary)}
+.nav-actions{display:flex;align-items:center;gap:14px}
+
+.theme-toggle{
+  width:40px;height:40px;border-radius:50%;border:1px solid var(--border);
+  background:var(--card);color:var(--text);display:flex;align-items:center;justify-content:center;
+  transition:border-color .2s ease,transform .2s ease;
+}
+.theme-toggle:hover{border-color:var(--primary);transform:rotate(12deg)}
+.theme-toggle svg{width:18px;height:18px}
+html[data-theme="dark"] .theme-toggle .icon-sun{display:block}
+html[data-theme="dark"] .theme-toggle .icon-moon{display:none}
+html[data-theme="light"] .theme-toggle .icon-sun{display:none}
+html[data-theme="light"] .theme-toggle .icon-moon{display:block}
+
+.nav-toggle{display:none;width:40px;height:40px;border-radius:10px;border:1px solid var(--border);background:var(--card);color:var(--text);align-items:center;justify-content:center}
+.nav-toggle svg{width:20px;height:20px}
+
+@media(max-width:900px){
+  .nav-toggle{display:flex}
+  .nav-links{
+    position:fixed;inset:72px 0 auto 0;flex-direction:column;gap:0;
+    background:var(--bg);border-bottom:1px solid var(--border);
+    padding:10px 24px 26px;transform:translateY(-120%);transition:transform .3s ease;box-shadow:var(--shadow);
+  }
+  .nav-links.open{transform:none}
+  .nav-links li{width:100%}
+  .nav-links a{display:block;padding:14px 4px;border-bottom:1px solid var(--border)}
+  .nav-links a::after{display:none}
+}
+
+/* ============================================================
+   Page hero
+   ============================================================ */
+.page-hero{padding:72px 0 40px;position:relative;overflow:hidden}
+.page-hero::after{
+  content:"";position:absolute;top:-140px;right:-160px;width:560px;height:560px;border-radius:50%;
+  background:radial-gradient(circle,rgba(212,175,55,.12),transparent 65%);pointer-events:none;
+}
+.page-hero h1{font-family:var(--font-display);font-weight:900;letter-spacing:.02em;margin:8px 0 12px}
+.page-hero p{font-size:1.05rem;max-width:620px}
+.page-hero .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
+
+/* ============================================================
+   Filter bar
+   ============================================================ */
+.filter-bar{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-bottom:34px}
+.filter-search{
+  flex:1;min-width:220px;padding:12px 18px;border-radius:999px;border:1px solid var(--border);
+  background:var(--input-bg);color:var(--text);font-family:inherit;font-size:.9rem;outline:none;
+  transition:border-color .2s ease;
+}
+.filter-search:focus{border-color:var(--primary)}
+.filter-search::placeholder{color:var(--muted)}
+.filter-chip{
+  padding:10px 18px;border-radius:999px;border:1px solid var(--border);background:var(--card);color:var(--text);
+  font-family:var(--font-heading);font-size:.85rem;font-weight:600;
+  transition:border-color .2s ease,color .2s ease,background .2s ease;
+}
+.filter-chip:hover{border-color:var(--primary);color:var(--primary)}
+.filter-chip.active{background:var(--primary-soft);border-color:var(--primary);color:var(--primary)}
+
+/* ============================================================
+   Project cards
+   ============================================================ */
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.project-card{
+  background:var(--card);border:1px solid var(--border);border-radius:18px;padding:26px;
+  display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden;
+  transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
+}
+.project-card::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--gradient);
+  transform:scaleX(0);transform-origin:left;transition:transform .35s ease;
+}
+.project-card:hover{transform:translateY(-6px);border-color:var(--primary);box-shadow:var(--shadow)}
+.project-card:hover::before{transform:scaleX(1)}
+.pc-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.pc-icon{
+  width:46px;height:46px;flex:none;display:flex;align-items:center;justify-content:center;
+  border-radius:12px;background:var(--primary-soft);border:1px solid var(--border);color:var(--primary);
+}
+.pc-icon svg{width:22px;height:22px}
+.pc-badge{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:4px 10px;border-radius:999px;background:var(--primary-soft);color:var(--primary)}
+.project-card h3{font-size:1.08rem;line-height:1.3}
+.project-card p{font-size:.9rem;flex:1}
+.tech-row{display:flex;flex-wrap:wrap;gap:8px}
+.tech-row .chip{font-size:.7rem;padding:4px 10px}
+.pc-links{display:flex;gap:10px;margin-top:4px}
+.pc-links a{
+  flex:1;text-align:center;padding:9px 12px;border-radius:10px;border:1px solid var(--border);
+  font-family:var(--font-heading);font-size:.82rem;font-weight:600;color:var(--text);
+  transition:border-color .2s ease,color .2s ease,background .2s ease;
+  display:inline-flex;align-items:center;justify-content:center;gap:7px;
+}
+.pc-links a svg{width:15px;height:15px}
+.pc-links a:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-soft)}
+@media(max-width:1000px){.projects-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.projects-grid{grid-template-columns:1fr}}
+
+/* ============================================================
+   Internship offers
+   ============================================================ */
+.int-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
+.int-card{
+  background:var(--card);border:1px solid var(--border);border-radius:18px;padding:26px;
+  display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden;
+  transition:transform .25s ease,border-color .25s ease;
+}
+.int-card:hover{border-color:var(--primary);transform:translateY(-4px)}
+.int-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.int-icon{
+  width:46px;height:46px;flex:none;display:flex;align-items:center;justify-content:center;
+  border-radius:12px;background:var(--primary-soft);border:1px solid var(--border);color:var(--primary);
+}
+.int-icon svg{width:22px;height:22px}
+.int-status{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:4px 10px;border-radius:999px;border:1px dashed var(--border);color:var(--muted)}
+.int-card h3{font-size:1.08rem;line-height:1.3}
+.int-org{font-size:.85rem;color:var(--muted)}
+.int-card p{font-size:.9rem}
+@media(max-width:720px){.int-grid{grid-template-columns:1fr}}
+
+/* ============================================================
+   CTA band
+   ============================================================ */
+.cta-band{
+  background:linear-gradient(135deg,rgba(212,175,55,.10),rgba(245,208,97,.06));
+  border:1px solid var(--border);border-radius:26px;padding:52px 40px;text-align:center;position:relative;overflow:hidden;
+  -webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);
+}
+.cta-band h2{margin-bottom:14px}
+.cta-band p{max-width:520px;margin:0 auto 26px}
+.cta-band .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+/* ============================================================
+   Footer
+   ============================================================ */
+footer.site-footer{border-top:1px solid var(--border);background:var(--bg-soft);padding:40px 0;margin-top:40px}
+.footer-grid{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.footer-logo{display:inline-flex;align-items:center;gap:.28em;white-space:nowrap;font-family:"Cinzel Decorative","Cinzel",serif;font-weight:700;font-size:1.05rem}
+.footer-logo span:first-child{color:var(--text)}
+.footer-logo span:last-child{color:var(--primary)}
+footer p{font-size:.85rem}
+.footer-links{display:flex;gap:18px;list-style:none;flex-wrap:wrap}
+.footer-links a{font-size:.85rem;color:var(--muted)}
+.footer-links a:hover{color:var(--primary)}
+
+/* ============================================================
+   Back to top
+   ============================================================ */
+.back-top{
+  position:fixed;right:22px;bottom:22px;width:46px;height:46px;border-radius:50%;
+  border:1px solid var(--border);background:var(--card);color:var(--text);
+  display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;
+  transition:opacity .3s ease,transform .3s ease,border-color .2s ease;z-index:90;box-shadow:var(--shadow);
+}
+.back-top.show{opacity:1;pointer-events:auto}
+.back-top:hover{border-color:var(--primary);color:var(--primary);transform:translateY(-3px)}
+.back-top svg{width:19px;height:19px}
+
+/* ============================================================
+   Glassmorphism
+   ============================================================ */
+.theme-toggle,.nav-toggle,.hero-socials a,.pc-icon,.int-icon{
+  -webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);
+  background:var(--card);
+}
+
+/* ============================================================
+   Custom cursor
+   ============================================================ */
+.cursor-glow,.cursor-ring,.cursor-dot{
+  position:fixed;top:0;left:0;border-radius:50%;pointer-events:none;will-change:transform;
+  opacity:0;transform:translate3d(-9999px,-9999px,0) translate(-50%,-50%);transition:opacity .3s ease;
+}
+.cursor-glow{z-index:-1;width:60px;height:60px;background:radial-gradient(circle,rgba(212,175,55,.14) 0%,rgba(212,175,55,0) 70%)}
+.cursor-ring{z-index:9999;width:20px;height:20px;border:1px solid rgba(212,175,55,.5);background:rgba(212,175,55,.08)}
+.cursor-ring.is-hover{border-color:rgba(212,175,55,.85);background:rgba(212,175,55,.04);box-shadow:0 0 8px rgba(212,175,55,.16)}
+.cursor-dot{z-index:9999;width:4px;height:4px;background:rgba(212,175,55,.9)}
+.cursor-glow.is-on,.cursor-ring.is-on,.cursor-dot.is-on{opacity:1}
+@media (pointer:coarse){.cursor-glow,.cursor-ring,.cursor-dot{display:none!important}}
+@media (prefers-reduced-motion:reduce){.cursor-glow,.cursor-ring,.cursor-dot{display:none!important}}
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="progress" aria-hidden="true"></div>
+
+<!-- ================= Navbar ================= -->
+<header class="site-header">
+  <div class="container nav">
+    <a href="index.html" class="brand-logo" aria-label="Subasri home"><span>S</span><span>A</span></a>
+    <nav aria-label="Primary">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html" class="active">Projects</a></li>
+        <li><a href="index.html#certifications">Certifications</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="resume.pdf" target="_blank" rel="noopener">Resume</a></li>
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark or light theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ================= Page hero ================= -->
+<section class="page-hero">
+  <div class="container">
+    <div class="reveal">
+      <span class="eyebrow">Selected Work</span>
+      <h1>Projects &amp; <span class="text-gradient">experiments</span></h1>
+      <p>Everything I have designed and built — from AI agents and responsive websites to Python tools and Java applications. A mix of coursework, self-learning and things made just for fun.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="index.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          Back to Portfolio
+        </a>
+        <a class="btn btn-outline" href="resume.pdf" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          Resume
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= Internship offers ================= -->
+<section class="section section-tight" id="internships">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Internships</span>
+      <h2>Offers on the <span class="text-gradient">table</span></h2>
+      <p>Internship offers received in cybersecurity — the door is open, and I am ready to walk through it.</p>
+    </div>
+    <div class="int-grid" id="intGrid"></div>
+  </div>
+</section>
+
+<!-- ================= All projects ================= -->
+<section class="section" id="projects">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">All Projects</span>
+      <h2>Things I've <span class="text-gradient">designed &amp; built</span></h2>
+      <p>Filter by category or search to find the projects you care about.</p>
+    </div>
+    <div class="filter-bar reveal">
+      <input type="search" class="filter-search" id="projSearch" placeholder="Search projects…" aria-label="Search projects">
+      <div class="filter-chips" id="filterChips"></div>
+    </div>
+    <div class="projects-grid" id="projGrid"></div>
+    <div class="cta-band reveal" style="margin-top:56px">
+      <span class="eyebrow" style="justify-content:center">More on GitHub</span>
+      <h2>30+ projects and <span class="text-gradient">counting</span></h2>
+      <p>Explore every repository, commit and experiment on my GitHub profile.</p>
+      <div class="cta-btns">
+        <a class="btn btn-primary" href="https://github.com/subajeeva80432-ara" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+          View GitHub
+        </a>
+        <a class="btn btn-outline" href="index.html">Back to Portfolio</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= Footer ================= -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-logo"><span>S</span><span>A</span></div>
+      <p>Let's build something meaningful together.</p>
+      <p>© <span id="year">2026</span> Subasri Aramudhu · Chennai, India</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="https://github.com/subajeeva80432-ara" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/subasri-aramudhu-842a09373" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="https://leetcode.com/u/subasriaramudhu1/" target="_blank" rel="noopener">LeetCode</a></li>
+      <li><a href="mailto:subajeeva80432@gmail.com">Email</a></li>
+      <li><a href="resume.pdf" target="_blank" rel="noopener">Resume</a></li>
+    </ul>
+  </div>
+</footer>
+
+<button class="back-top" id="backTop" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<div class="grain" aria-hidden="true"></div>
+<div class="cursor-glow" id="cursorGlow"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<script>
+(function () {
+  "use strict";
+
+  function $(id) { return document.getElementById(id); }
+
+  function svgWrap(paths, cls) {
+    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="' + (cls || "") + '">' + paths + '</svg>';
+  }
+
+  var ICON = {
+    web: '<circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z"/>',
+    ai: '<path d="M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2z"/><path d="M12 6v6l4 2"/>',
+    ui: '<path d="m12 19 7-7 3 3-7 7-3-3z"/><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18z"/><path d="m2 2 7.6 7.6"/><circle cx="11" cy="11" r="2"/>',
+    py: '<path d="M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2z"/><path d="M8 14V8a4 4 0 0 1 8 0v6"/><circle cx="12" cy="17" r="1.4"/>',
+    java: '<path d="M8 3 2 12l6 9M16 3l6 9-6 9M13 2l-2 20"/>',
+    shield: '<path d="M12 2 4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5z"/>',
+    heart: '<path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2C10.5 3.5 9.3 3 7.5 3A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"/>',
+    box: '<path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z"/>',
+    layers: '<path d="m12 2 9 5-9 5-9-5 9-5z"/><path d="m3 12 9 5 9-5"/><path d="m3 17 9 5 9-5"/>'
+  };
+
+  /* ================= DATA ================= */
+  var CATS = [
+    { id: "all", label: "All" },
+    { id: "web", label: "Web" },
+    { id: "ai", label: "AI" },
+    { id: "ui", label: "UI/UX" },
+    { id: "py", label: "Python" },
+    { id: "java", label: "Java" }
+  ];
+
+  var PROJECTS = [
+    {
+      icon: ICON.ai, cat: "ai", badge: "AI",
+      title: "Rindu — LinkedIn Post Writer",
+      desc: "An AI agent built with Lyzr AI Studio / Lyzr Agent Studio that writes engaging LinkedIn posts — my first taste of building with AI agent frameworks.",
+      tech: ["Lyzr AI Studio", "AI Agents", "Prompting"],
+      links: { demo: "", code: "https://github.com/subajeeva80432-ara" }
+    },
+    {
+      icon: ICON.ui, cat: "ui", badge: "UI/UX",
+      title: "Modern Portfolio Concept",
+      desc: "A modern portfolio design concept focused on clean layouts, generous spacing and a premium visual hierarchy.",
+      tech: ["UI/UX Design", "Design Concept", "Typography"],
+      links: { demo: "", code: "https://github.com/subajeeva80432-ara" }
+    },
+    {
+      icon: ICON.web, cat: "web", badge: "Web",
+      title: "Fictional Model Portfolio",
+      desc: "A fictional model portfolio site built with HTML, CSS, JavaScript, ES6 and DOM manipulation.",
+      tech: ["HTML", "CSS", "JavaScript", "ES6", "DOM"],
+      links: { demo: "", code: "https://github.com/subajeeva80432-ara" }
+    },
+    {
+      icon: ICON.web, cat: "web", badge: "Live",
+      title: "Responsive College Website",
+      desc: "A fully responsive college website built with HTML, CSS, JavaScript, ES6 and DOM manipulation. Available live on GitHub Pages.",
+      tech: ["HTML", "CSS", "JavaScript", "ES6"],
+      links: { demo: "https://lnkd.in/gYezeY5F", code: "https://lnkd.in/g3ACYrxH" }
+    },
+    {
+      icon: ICON.heart, cat: "web", badge: "Web",
+      title: "Valentine's Special Page for Appa",
+      desc: "A heartfelt, interactive Valentine's page made for Appa — a personal project that mixes emotion with front-end skills.",
+      tech: ["HTML", "CSS", "JavaScript"],
+      links: { demo: "", code: "https://github.com/subajeeva80432-ara" }
+    },
+    {
+      icon: ICON.layers, cat: "web", badge: "Learning",
+      title: "Semester II Frontend Lab",
+      desc: "A collection of front-end learning experiments from Semester II — small sites and components that built my web fundamentals.",
+      tech: ["HTML", "CSS", "JavaScript", "Responsive Design"],
+      links: { demo: "", code: "https://github.com/subajeeva80432-ara" }
+    },
+    {
+      icon: ICON.shield, cat: "py", badge: "Python",
+      title: "Mini Port Scanner",
+      desc: "A lightweight Python network tool that scans a host for open ports.",
+      tech: ["Python", "Networking", "Scripting"],
+      links: { demo: "", code: "https://github.com/subajeeva80432-ara" }
+    },
+    {
+      icon: ICON.py, cat: "py", badge: "Python",
+      title: "Python Quiz App",
+      desc: "A console-based quiz application in Python with questions, scoring and instant feedback.",
+      tech: ["Python", "Loops", "Functions"],
+      links: { demo: "", code: "https://github.com/subajeeva80432-ara" }
+    },
+    {
+      icon: ICON.py, cat: "py", badge: "Python",
+      title: "ATM Machine System",
+      desc: "A Python simulation of an ATM — balance check, deposits, withdrawals and PIN handling.",
+      tech: ["Python", "Control Flow", "OOP Basics"],
+      links: { demo: "", code: "https://github.com/subajeeva80432-ara" }
+    },
+    {
+      icon: ICON.py, cat: "py", badge: "Python",
+      title: "Word Guess Game",
+      desc: "A classic word-guessing game in Python with difficulty levels and a scoring system.",
+      tech: ["Python", "Strings", "Random"],
+      links: { demo: "", code: "https://github.com/subajeeva80432-ara" }
+    },
+    {
+      icon: ICON.layers, cat: "py", badge: "Python",
+      title: "Python Mini Projects Collection",
+      desc: "A batch of 9 Python mini projects covering logic, maths and small utilities — part of my Python learning journey.",
+      tech: ["Python", "Problem Solving"],
+      links: { demo: "", code: "https://github.com/subajeeva80432-ara" }
+    },
+    {
+      icon: ICON.java, cat: "java", badge: "Java",
+      title: "Java Login & Signup System",
+      desc: "A Java application with JDBC-based authentication — signup, login and password handling backed by a database.",
+      tech: ["Java", "JDBC", "OOP"],
+      links: { demo: "", code: "https://github.com/subajeeva80432-ara" }
+    },
+    {
+      icon: ICON.box, cat: "java", badge: "Java",
+      title: "Java OOP Projects (18)",
+      desc: "A collection of 18 Object-Oriented Programming projects in Java — from class design to full mini applications.",
+      tech: ["Java", "OOP", "Inheritance", "Polymorphism"],
+      links: { demo: "", code: "https://github.com/subajeeva80432-ara" }
+    }
+  ];
+
+  var INTERNSHIPS = [
+    {
+      icon: ICON.shield,
+      title: "Cybersecurity Internship",
+      org: "Codec Technologies",
+      desc: "Internship offer received in cybersecurity. Exploring the domain further before finalising the onboarding."
+    },
+    {
+      icon: ICON.shield,
+      title: "Cybersecurity Internship",
+      org: "CodeAlpha",
+      desc: "Internship offer received in cybersecurity. Evaluating the role and its learning opportunities."
+    }
+  ];
+
+  /* ================= THEME ================= */
+  var themeToggle = $("themeToggle");
+  function applyTheme(t) {
+    document.documentElement.setAttribute("data-theme", t);
+    try { localStorage.setItem("theme", t); } catch (e) {}
+  }
+  var savedTheme = null;
+  try { savedTheme = localStorage.getItem("theme"); } catch (e) {}
+  applyTheme(savedTheme || "dark");
+  themeToggle.addEventListener("click", function () {
+    var cur = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    applyTheme(cur);
+  });
+
+  /* ================= NAV ================= */
+  var navToggle = $("navToggle"), navLinks = $("navLinks");
+  navToggle.addEventListener("click", function () {
+    var open = navLinks.classList.toggle("open");
+    navToggle.setAttribute("aria-expanded", open);
+  });
+  navLinks.querySelectorAll("a").forEach(function (a) {
+    a.addEventListener("click", function () { navLinks.classList.remove("open"); });
+  });
+
+  /* ================= FILTER CHIPS ================= */
+  var activeCat = "all";
+  $("filterChips").innerHTML = CATS.map(function (c) {
+    return '<button class="filter-chip' + (c.id === activeCat ? ' active' : '') + '" data-cat="' + c.id + '">' + c.label + '</button>';
+  }).join("");
+
+  function filterProjects() {
+    var q = ($("projSearch").value || "").toLowerCase().trim();
+    var list = PROJECTS.filter(function (p) {
+      if (activeCat !== "all" && p.cat !== activeCat) return false;
+      if (q && (p.title + " " + p.desc + " " + p.tech.join(" ")).toLowerCase().indexOf(q) === -1) return false;
+      return true;
+    });
+    $("projGrid").innerHTML = list.map(function (p) {
+      var links =
+        (p.links.demo ? '<a href="' + p.links.demo + '" target="_blank" rel="noopener">' + svgWrap('<path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/>') + 'Demo</a>' : "") +
+        (p.links.code ? '<a href="' + p.links.code + '" target="_blank" rel="noopener">' + svgWrap('<path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/>') + 'Code</a>' : "");
+      return '<div class="project-card reveal">' +
+        '<div class="pc-top"><div class="pc-icon">' + svgWrap(p.icon) + '</div>' +
+        (p.badge ? '<span class="pc-badge">' + p.badge + '</span>' : '') + '</div>' +
+        '<h3>' + p.title + '</h3>' +
+        '<p>' + p.desc + '</p>' +
+        '<div class="tech-row">' + p.tech.map(function (t) { return '<span class="chip">' + t + '</span>'; }).join("") + '</div>' +
+        '<div class="pc-links">' + links + '</div>' +
+        '</div>';
+    }).join("");
+    if (!list.length) {
+      $("projGrid").innerHTML = '<p style="text-align:center;color:var(--muted)">No projects match your search.</p>';
+    }
+    observeReveals();
+  }
+
+  document.querySelectorAll("#filterChips .filter-chip").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      activeCat = btn.getAttribute("data-cat");
+      document.querySelectorAll("#filterChips .filter-chip").forEach(function (b) { b.classList.toggle("active", b === btn); });
+      filterProjects();
+    });
+  });
+  $("projSearch").addEventListener("input", filterProjects);
+  filterProjects();
+
+  /* ================= INTERNSHIPS ================= */
+  $("intGrid").innerHTML = INTERNSHIPS.map(function (x) {
+    return '<div class="int-card reveal">' +
+      '<div class="int-top"><div class="int-icon">' + svgWrap(x.icon) + '</div>' +
+      '<span class="int-status">Offered</span></div>' +
+      '<h3>' + x.title + '</h3>' +
+      '<div class="int-org">' + x.org + '</div>' +
+      '<p>' + x.desc + '</p>' +
+      '</div>';
+  }).join("");
+  observeReveals();
+
+  /* ================= REVEAL ================= */
+  var revealObs = null;
+  function observeReveals() {
+    if (!revealObs) {
+      revealObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) { en.target.classList.add("visible"); revealObs.unobserve(en.target); }
+        });
+      }, { threshold: 0.12 });
+    }
+    document.querySelectorAll(".reveal:not(.visible)").forEach(function (el) { revealObs.observe(el); });
+  }
+  observeReveals();
+
+  /* ================= SCROLL PROGRESS + BACK TOP ================= */
+  var progress = $("progress"), backTop = $("backTop");
+  window.addEventListener("scroll", function () {
+    var h = document.documentElement;
+    var scrolled = h.scrollTop / (h.scrollHeight - h.clientHeight);
+    progress.style.width = scrolled * 100 + "%";
+    if (h.scrollTop > 500) backTop.classList.add("show");
+    else backTop.classList.remove("show");
+  }, { passive: true });
+  backTop.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: "smooth" }); });
+
+  /* ================= CUSTOM CURSOR ================= */
+  var glow = $("cursorGlow"), ring = $("cursorRing"), dot = $("cursorDot");
+  var mX = -9999, mY = -9999, rX = -9999, rY = -9999;
+  document.addEventListener("mousemove", function (e) {
+    mX = e.clientX; mY = e.clientY;
+    dot.style.transform = "translate(" + mX + "px," + mY + "px) translate(-50%,-50%)";
+    glow.style.transform = "translate(" + mX + "px," + mY + "px) translate(-50%,-50%)";
+  });
+  (function loop() {
+    rX += (mX - rX) * 0.16;
+    rY += (mY - rY) * 0.16;
+    ring.style.transform = "translate(" + rX + "px," + rY + "px) translate(-50%,-50%)";
+    requestAnimationFrame(loop);
+  })();
+  document.addEventListener("mouseenter", function () {
+    glow.classList.add("is-on"); ring.classList.add("is-on"); dot.classList.add("is-on");
+  });
+  document.addEventListener("mouseleave", function () {
+    glow.classList.remove("is-on"); ring.classList.remove("is-on"); dot.classList.remove("is-on");
+  });
+  document.querySelectorAll("a, button, input, textarea").forEach(function (el) {
+    el.addEventListener("mouseenter", function () { ring.classList.add("is-hover"); });
+    el.addEventListener("mouseleave", function () { ring.classList.remove("is-hover"); });
+  });
+
+  /* ================= YEAR ================= */
+  $("year").textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>

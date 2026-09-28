@@ -1,0 +1,26 @@
+.goal-card {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border-radius: 20px;
+  padding: 36px 40px;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.goal-heading {
+  margin: 0 0 14px;
+  font-size: 1.5rem;
+  color: #ffffff;
+}
+
+.goal-text {
+  margin: 0;
+  font-size: 1.15rem;
+  line-height: 1.9;
+  color: #ede9fe;
+  max-width: 72ch;
+}
